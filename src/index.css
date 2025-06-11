@@ -1,68 +1,122 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* 1. Importa a fonte profissional 'Poppins' do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+/* 2. Define a fonte e cores base para toda a aplicação */
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* 3. Estiliza o fundo da área do React Flow */
+.react-flow__pane {
+  background-color: #111827; /* Cinzento escuro azulado */
+  background-image: radial-gradient(#4b5563 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
+/* 4. Estilo base para TODOS os nós */
+.react-flow__node {
   border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: #1f2937;
+  font-weight: 600;
+  border-width: 2px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  /* Transição suave para todos os efeitos */
+  transition: all 0.2s ease-in-out;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.react-flow__node.node-ramo {
+  /* Aumenta a largura para parecer um título */
+  width: 250px;
+  /* Centraliza o texto */
+  text-align: center;
+  /* Deixa a fonte um pouco maior */
+  font-size: 16px;
+  /* Muda o estilo da borda para algo diferente */
+  border-style: dashed;
+}
+
+/* 5. Efeito de Hover para os nós de estudo */
+.react-flow__node.node-estudo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #0ea5e9; /* Sombra azul mais forte */
+  border-color: #0ea5e9;
+}
+
+/* 6. Estilo para nós bloqueados */
+.react-flow__node.node-locked {
+  cursor: not-allowed;
+}
+
+/* 7. Estilo para as conexões (edges) */
+.react-flow__edgepath {
+  stroke: #4b5563; /* Cor cinzenta para a linha */
+  stroke-width: 2.5;
+}
+
+/* ===== NOVOS ESTILOS PARA AS ABAS DE NAVEGAÇÃO ===== */
+
+/* Estilo base para cada botão/aba de nível */
+.level-tab {
+  padding: 8px 16px;
+  border: 2px solid #6b7280; /* Borda cinzenta padrão */
+  background-color: transparent;
+  color: #d1d5db; /* Cor do texto padrão */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Efeito ao passar o rato por cima de uma aba */
+.level-tab:hover {
+  background-color: #4b5563;
+  color: #ffffff;
+}
+
+/* --- Estilos para o STATUS da aba --- */
+
+/* Aba ATIVA (nível selecionado) */
+.level-tab.active {
+  background-color: #3b82f6; /* Azul para a aba ativa */
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+/* Aba de nível CONCLUÍDO */
+.level-tab.completed {
+  border-color: #a3e635;
+  color: #a3e635;
+}
+.level-tab.completed.active {
+  background-color: #a3e635;
+  color: #1f2937;
+  border-color: #a3e635;
+}
+
+/* Aba de nível EM PROGRESSO */
+.level-tab.in-progress {
+  border-color: #f59e0b;
+  color: #f59e0b;
+}
+.level-tab.in-progress.active {
+  background-color: #f59e0b;
+  color: #1f2937;
+  border-color: #f59e0b;
+}
+
+/* Aba de nível BLOQUEADO (padrão) */
+.level-tab.locked {
+  border-color: #6b7280;
+  color: #6b7280;
+}
+.level-tab.locked.active {
+  background-color: #6b7280;
+  color: #ffffff;
+  border-color: #6b7280;
 }
